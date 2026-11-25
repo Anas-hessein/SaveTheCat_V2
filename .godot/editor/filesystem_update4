@@ -1,0 +1,5 @@
+res://scenes/titlescreen.tscn
+res://scenes/Slime.tscn
+res://scenes/game_1.tscn
+res://scenes/racon.tscn
+res://script/racon.gd

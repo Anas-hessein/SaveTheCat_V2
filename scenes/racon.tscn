@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://weuov7cc32j7"]
+
+[ext_resource type="Texture2D" uid="uid://07l6uuqkg1lb" path="res://assets/sRaccoon_free.png" id="1_h6j8t"]
+[ext_resource type="Script" uid="uid://brmjtt5elrktm" path="res://script/racon.gd" id="1_yeqo5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yeqo5"]
+atlas = ExtResource("1_h6j8t")
+region = Rect2(0, 32, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lht6f"]
+atlas = ExtResource("1_h6j8t")
+region = Rect2(64, 32, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4bqb2"]
+atlas = ExtResource("1_h6j8t")
+region = Rect2(128, 32, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rhist"]
+atlas = ExtResource("1_h6j8t")
+region = Rect2(192, 32, 64, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mqm1t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yeqo5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lht6f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4bqb2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rhist")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5llee"]
+size = Vector2(25, 9)
+
+[node name="racon" type="CharacterBody2D" unique_id=197162363]
+script = ExtResource("1_yeqo5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=642654679]
+sprite_frames = SubResource("SpriteFrames_mqm1t")
+animation = &"idle"
+frame_progress = 0.8663102
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1496235029]
+position = Vector2(1.5, 11.5)
+shape = SubResource("RectangleShape2D_5llee")
+
+[node name="DirTimer" type="Timer" parent="." unique_id=2097327115]
+autostart = true
+
+[connection signal="timeout" from="DirTimer" to="." method="_on_dir_timer_timeout"]
